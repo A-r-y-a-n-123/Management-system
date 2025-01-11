@@ -1,3 +1,5 @@
+from tkinter import *
+from tkinter import ttk
 import re
 
 class User:
@@ -68,65 +70,69 @@ class UserManagementSystem:
                     user.email=updatedemail
                 if updatedphone:
                     user.phone=updatedphone
-                print("User updated succesfully..")
+                print("User updated succesfully...")
                 return
-        print("User not found")
+        print("Passkey is invalid")
 
+class usermanagementgui:
+    def __init__(self,root):
+        self.root=root
+        self.root.title("USM")
+        #self.user_management_system=UserManagementSystem()
                
-            
-
-
-
 def main():
-    user_management_system=UserManagementSystem()
+    root=Tk()
+    app=usermanagementgui(root)
+    root.mainloop()
+    # user_management_system=UserManagementSystem()
 
-    while True:
-        print("\nUser Information Management System")
-        print("1. Add Users")
-        print("2. Remove Users")
-        print("3. Search Users")
-        print("4. Display All Users")
-        print("5. Exit")
-        print("6. Update Users")
+    # while True:
+    #     print("\nUser Information Management System")
+    #     print("1. Add Users")
+    #     print("2. Remove Users")
+    #     print("3. Search Users")
+    #     print("4. Display All Users")
+    #     print("5. Exit")
+    #     print("6. Update Users")
 
-        choice=input("Enter your choice: ")
+    #     choice=input("Enter your choice: ")
 
-        if choice=="1":
-            name=input("Enter name: ")
-            email=input("Enter email: ")
-            phone=input("Enter phone (in the format +<country code><10-digit number>): ")
-            passkey=input("Enter ur passkey: ")
-            try:
-                new_user=User(name,email,phone,passkey)
-                user_management_system.add_user(new_user)
-            except ValueError as e:
-                print("Error:", e)
+    #     if choice=="1":
+    #         name=input("Enter name: ")
+    #         email=input("Enter email: ")
+    #         phone=input("Enter phone in the format +<country code><10-digit number>: ")
+    #         passkey=input("Enter ur passkey: ")
+    #         try:
+    #             new_user=User(name,email,phone,passkey)
+    #             user_management_system.add_user(new_user)
+    #         except ValueError as e:
+    #             print("Error:", e)
 
-        elif choice=="2":
-            email=input("Enter email of the user to remove: ")
-            user_management_system.remove_user(email)
+    #     elif choice=="2":
+    #         email=input("Enter email of the user to remove: ")
+    #         user_management_system.remove_user(email)
 
-        elif choice=="3":
-            email=input("Enter email of the user to search: ")
-            user_management_system.search_user(email)
+    #     elif choice=="3":
+    #         email=input("Enter email of the user to search: ")
+    #         user_management_system.search_user(email)
 
-        elif choice=="4":
-            user_management_system.display_all_users()
+    #     elif choice=="4":
+    #         user_management_system.display_all_users()
 
-        elif choice=="5":
-            print("Exiting...")
-            break
+    #     elif choice=="5":
+    #         print("Exiting...")
+    #         break
 
-        elif choice=="6":
-            passkey=input("Enter ur passkey to update ur data: ")
-            updatedname=input("Enter your updated name: ")
-            updatedemail=input("Enter your updated email: ")
-            updatedphone=input("Enter your updated phone: ")
+    #     elif choice=="6":
+    #         passkey=input("Enter ur passkey to update ur data: ")
+    #         updatedname=input("Enter your updated name: ")
+    #         updatedemail=input("Enter your updated email: ")
+    #         updatedphone=input("Enter your updated phone: ")
 
-            user_management_system.update_users(passkey,updatedname,updatedemail,updatedphone)
+    #         user_management_system.update_users(passkey,updatedname,updatedemail,updatedphone)
 
-        else:
-            print("Invalid choice, please enter a number between 1 and 5.")
+    #     else:
+    #         print("Invalid choice, please enter a number between 1 and 5.")
 
 if __name__=="__main__":
     main()
